@@ -10,6 +10,44 @@
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Client client1 = new Client("Иван", 2500.0);
+        client1.addToWishList(new Product("Капуста", 100.0));
+        client1.addToWishList(new Product("Говядина", 600.0));
+        client1.addToWishList(new Product("Молоко", 70.0));
+
+        Client client2 = new Client("Татьяна", 1500.0);
+        client2.addToWishList(new Product("Картофель", 40.0));
+        client2.addToWishList(new Product("Свинина", 350.0));
+        client2.addToWishList(new Product("Молоко", 70.0));
+
+        Client client3 = new Client("Ольга", 1000.0);
+        client3.addToWishList(new Product("Говядина", 600.0));
+        client3.addToWishList(new Product("Свинина", 350.0));
+        client3.addToWishList(new Product("Картофель", 40.0));
+
+        Market market = new Market();
+        market.addProduct(new Product("Капуста", 100.0));
+        market.addProduct(new Product("Говядина", 600.0));
+        market.addProduct(new Product("Молоко", 70.0));
+        market.addProduct(new Product("Картофель", 40.0));
+        market.addProduct(new Product("Свинина", 350.0));
+        market.addProduct(new Product("Молоко", 70.0));
+        market.addProduct(new Product("Говядина", 600.0));
+        market.addProduct(new Product("Свинина", 350.0));
+        market.addProduct(new Product("Картофель", 40.0));
+
+        System.out.println(market);
+        market.addToQueue(client1);
+        market.addToQueue(client2);
+        market.addToQueue(client3);
+
+
+
+
+
+
+
+
     }
 }

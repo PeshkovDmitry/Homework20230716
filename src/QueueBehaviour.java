@@ -2,13 +2,7 @@ import java.util.List;
 
 public interface QueueBehaviour {
 
-    void addToQueue();
+    void addToQueue(Client client);
 
-    void leftQueue();
-
-    void reachEndOfQueue();
-
-    List<String> showQueueStatus();
-
-    int sizeOfQueue();
+    void leftQueue(Client client);
 }
