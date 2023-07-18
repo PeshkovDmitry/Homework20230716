@@ -22,6 +22,7 @@ public class Client implements DoShopping, UseWishList {
         if (canBuy(product)) {
             money -= product.getPrice();
             purchases.add(product);
+            wishList.remove(product);
         }
     }
 
@@ -39,6 +40,15 @@ public class Client implements DoShopping, UseWishList {
     public void removeFromWishList(Product product) {
         wishList.remove(product);
     }
+
+    public List<Product> getWishList() {
+        return wishList;
+    }
+
+    public List<Product> getPurchases() {
+        return purchases;
+    }
+
 
     @Override
     public String toString() {

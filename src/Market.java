@@ -6,8 +6,21 @@ public class Market implements MarketBehaviour, QueueBehaviour {
 
     public Queue<Client> queue = new LinkedList<>();
 
-    public void update() {
+    private List<Client> satisfiedClients = new ArrayList<>();
 
+    public void update() {
+        Client currentClient = queue.poll();
+        if (currentClient != null) {
+            for (int i = 0; i < currentClient.getWishList().size(); i++) {
+                Product wish = currentClient.getWishList().get(i);
+                if ((products.contains(wish)) && currentClient.canBuy(wish)) {
+                    currentClient.Buy(wish);
+                    sellProduct(wish);
+                    i--;
+                }
+            }
+            satisfiedClients.add(currentClient);
+        }
     }
 
     @Override
@@ -34,13 +47,16 @@ public class Market implements MarketBehaviour, QueueBehaviour {
     @Override
     public String toString() {
         String productsString = MyPrintMethods.showAsFormattedList(
-                "Продукты в продаже:", products.toArray());
+                "ПРОДУКТЫ В ПРОДАЖЕ:", products.toArray());
         String queueString = MyPrintMethods.showAsFormattedList(
-                "Клиенты в очереди:", queue.toArray());
+                "КЛИЕНТЫ В ОЧЕРЕДИ:", queue.toArray());
+        String satisfiedClientsString = MyPrintMethods.showAsFormattedList(
+                "ДОВОЛЬНЫЕ КЛИЕНТЫ:", satisfiedClients.toArray());
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Рынок: \n")
+        stringBuilder.append("### РЫНОК ### \n")
                 .append(productsString)
-                .append(queueString);
+                .append(queueString)
+                .append(satisfiedClientsString);
         return stringBuilder.toString();
     }
 }

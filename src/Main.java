@@ -1,10 +1,10 @@
 /*
-Реализовать класс Market и все его обязательные методы.
-Этот класс должен реализовывать методы из интерфейса QueueBehaviour,
-которые имитируют работу очереди. Кроме того, класс должен содержать методы,
-соответствующие интерфейсу MarketBehaviour, которые добавляют и
-удаляют людей из очереди, а также метод update, который обновляет
-состояние магазина путем принятия и отдачи заказов.
+    Реализовать класс Market и все его обязательные методы.
+    Этот класс должен реализовывать методы из интерфейса QueueBehaviour,
+    которые имитируют работу очереди. Кроме того, класс должен содержать методы,
+    соответствующие интерфейсу MarketBehaviour, которые добавляют и
+    удаляют людей из очереди, а также метод update, который обновляет
+    состояние магазина путем принятия и отдачи заказов.
  */
 
 
@@ -37,14 +37,17 @@ public class Main {
         market.addProduct(new Product("Свинина", 350.0));
         market.addProduct(new Product("Картофель", 40.0));
 
-        System.out.println(market);
         market.addToQueue(client1);
         market.addToQueue(client2);
         market.addToQueue(client3);
 
+        System.out.print(market);
 
-
-
+        market.update();
+        System.out.print(market);
+//
+//        market.update();
+//        System.out.println(market);
 
 
 
